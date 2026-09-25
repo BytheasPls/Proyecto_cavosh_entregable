@@ -3,18 +3,10 @@ FROM eclipse-temurin:21-jdk-alpine AS build
 
 WORKDIR /app
 
-# Copiar el wrapper de Maven
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
+COPY . .
 
 # Dar permisos de ejecución al wrapper
 RUN chmod +x mvnw
-
-# Descargar dependencias (cache de Docker)
-RUN ./mvnw dependency:go-offline -B
-
-# Copiar el código fuente
-COPY src ./src
 
 # Compilar el proyecto (saltando tests)
 RUN ./mvnw clean package -DskipTests
