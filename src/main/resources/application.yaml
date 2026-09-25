@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: cafe-api
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://aws-0-us-west-2.pooler.supabase.com:5432/postgres}
+    username: ${DB_USERNAME:postgres.fotiuedusgxftnfcbtkf}
+    password: ${DB_PASSWORD:cavosHentr32026}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME:leonardomathiasyarangaromero@gmail.com}
+    password: ${EMAIL_PASSWORD:ddsvxmcwptnzxlvu}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: UTC
+
+server:
+  port: ${PORT:8000}
+  error:
+    include-message: always
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:claveSecretaMuyLargaYSegura2026ParaCavoshCafeJWTQueTengaMasDe64Caracteres}
+    expiration: 86400000
